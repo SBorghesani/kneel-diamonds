@@ -1,6 +1,13 @@
 import { getSizes, setSize } from "./database.js"
+import { renderAllHTML } from "./main.js"
 
 const sizes = getSizes()
+
+// const sizesContainer = document.querySelectorAll(".choices__sizes")
+// const renderSizesHTML = () => { --------------- This doesn't work
+//     sizesContainer.innerHTML = DiamondSizes()
+// }
+
 
 document.addEventListener(
     "change",
