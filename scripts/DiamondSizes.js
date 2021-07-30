@@ -1,6 +1,13 @@
-import { getSizes, setSize } from "./database.js"
+import { getSizes, setSize, getOrderBuilder } from "./database.js"
+import { renderAllHTML } from "./main.js"
 
 const sizes = getSizes()
+
+// const sizesContainer = document.querySelectorAll(".choices__sizes")
+// const renderSizesHTML = () => { --------------- This doesn't work
+//     sizesContainer.innerHTML = DiamondSizes()
+// }
+
 
 document.addEventListener(
     "change",
@@ -8,23 +15,31 @@ document.addEventListener(
         if (event.target.name === "size") {
             // window.alert(`User chose size ${event.target.value}`)
             setSize(parseInt(event.target.value))
+            console.log("State of data has changed. Regenerating HTML...")
+            renderAllHTML()
         }
     }
-)
-
-export const DiamondSizes = () => {
+    )
+    
+    export const DiamondSizes = () => {
+    const orderBuilder = getOrderBuilder()
     let html = "<ul>"
 
     // Use .map() for converting objects to <li> elements
     const listItems = sizes.map(size => {
-        return `<li>
-            <input type="radio" name="size" value="${size.id}" /> ${size.carets}
-        </li>`
+        if (size.id === orderBuilder.sizeId) {
+            return `<li>
+            <input type="radio" name="size" value="${size.id}" checked/> ${size.carets}
+            </li>`
+        } else {
+            return `<li>
+            <input type="radio" name="size" value="${size.id}"/> ${size.carets}
+            </li>`
+        }    
     })
 
     html += listItems.join("")
     html += "</ul>"
-
     return html
 }
 

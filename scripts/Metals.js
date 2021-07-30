@@ -1,4 +1,5 @@
-import { getMetals, setMetal } from "./database.js"
+import { getMetals, setMetal, getOrderBuilder } from "./database.js"
+import { renderAllHTML } from "./main.js"
 
 const metals = getMetals()
 
@@ -8,21 +9,34 @@ document.addEventListener(
         if (event.target.name === "metal") {
             // window.alert(`User chose metal ${event.target.value}`)
             setMetal(parseInt(event.target.value))
+            console.log("State of data has changed. Regenerating HTML...")
+            renderAllHTML()
         }
     }
 )
 
+const orderBuilder = getOrderBuilder()
 export const Metals = () => {
     let html = "<ul>"
 
-    // This is how you have been converting objects to <li> elements
-    for (const metal of metals) {
-        html += `<li>
-            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
-        </li>`
-    }
+    // Use .map() for converting objects to <li> elements
+    const listItems = metals.map(metal => {
+        if (metal.id === orderBuilder.metalId) {
+            return `<li>
+            <input type="radio" name="metal" value="${metal.id}" checked/> ${metal.metal}
+            </li>`
+        } else {
+            return `<li>
+            <input type="radio" name="metal" value="${metal.id}"/> ${metal.metal}
+            </li>`
+        }
+    })
 
+    html += listItems.join("")
     html += "</ul>"
+
     return html
 }
+
+
 

@@ -4,6 +4,7 @@ const styles = getStyles()
 const sizes = getSizes()
 const jewelryOptions = getJewelryOptions()
 
+
 const buildOrderListItem = (order) => {
     const foundMetal = metals.find(
         (metal) => {
@@ -21,17 +22,24 @@ const buildOrderListItem = (order) => {
         (jewelryOption) => {
             return jewelryOption.id === order.jewelryOptionId
         })
-   
-    const totalCost = (foundMetal.price + foundStyle.price + foundSize.price) * foundJewelryOption.modifier
-    const costString = totalCost.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD"
-    })
-    
-    return `<li>
-        Order #${order.id} cost: ${costString} was placed on ${order.timestamp}
-    </li>`
-}
+
+     try {
+
+         const totalCost = (foundMetal.price + foundStyle.price + foundSize.price) * foundJewelryOption.modifier
+         const costString = totalCost.toLocaleString("en-US", {
+             style: "currency",
+             currency: "USD"
+            })
+            
+            return `<li>
+            Order #${order.id} cost: ${costString} was placed on ${order.timestamp}
+            </li>`
+        }
+        catch(err) {
+            // window.alert("you fucked up")
+            location.reload()
+        }   
+    }
 
 
 
@@ -49,7 +57,6 @@ export const Orders = () => {
 
     html += listItems.join("")
     html += "</ul>"
-
     return html
 }
 

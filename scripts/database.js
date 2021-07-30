@@ -43,6 +43,10 @@ const database = {
     orderBuilder: {}
 }
 
+export const getOrderBuilder = () => {
+    return database.orderBuilder
+}
+
 export const getMetals = () => {
     return database.metals.map(metal => ({...metal}))
 }
@@ -64,7 +68,12 @@ export const getJewelryOptions = () => {
 }
 
 export const setMetal = (id) => {
-    database.orderBuilder.metalId = id
+    try {
+        database.orderBuilder.metalId = id
+    } 
+    catch(err) {
+        window.alert("You fuct up")
+    }
 }
 
 export const setSize = (id) => {
@@ -95,7 +104,7 @@ export const addCustomOrder = () => {
 
     // Reset the temporary state for user choices
     database.orderBuilder = {}
-
+    
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }

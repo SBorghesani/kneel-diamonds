@@ -5,6 +5,7 @@ import { Orders } from "./Orders.js"
 import { Metals } from "./Metals.js"
 import { addCustomOrder } from "./database.js"
 import { JewelryOptions } from "./jewelry-options.js"
+import { renderAllHTML } from "./main.js"
 
 document.addEventListener(
     "click",
@@ -12,6 +13,7 @@ document.addEventListener(
         const itemClicked = event.target
         if (itemClicked.id.startsWith("orderButton")) {
             addCustomOrder()
+            renderAllHTML()
         }
 
     }
