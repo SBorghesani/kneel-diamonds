@@ -15,19 +15,19 @@ document.addEventListener(
     }
 )
 
-const orderBuilder = getOrderBuilder()
 export const Metals = () => {
+    const orderBuilder = getOrderBuilder()
     let html = "<ul>"
 
     // Use .map() for converting objects to <li> elements
     const listItems = metals.map(metal => {
         if (metal.id === orderBuilder.metalId) {
             return `<li>
-            <input type="radio" name="metal" value="${metal.id}" checked/> ${metal.metal}
+            <input type="radio" name="metal" value="${metal.id}" required checked/> ${metal.metal}
             </li>`
         } else {
             return `<li>
-            <input type="radio" name="metal" value="${metal.id}"/> ${metal.metal}
+            <input type="radio" name="metal" value="${metal.id}" required  /> ${metal.metal}
             </li>`
         }
     })

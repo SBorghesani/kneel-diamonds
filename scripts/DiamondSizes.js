@@ -33,7 +33,7 @@ document.addEventListener(
             </li>`
         } else {
             return `<li>
-            <input type="radio" name="size" value="${size.id}"/> ${size.carets}
+            <input type="radio" name="size" value="${size.id}" required /> ${size.carets}
             </li>`
         }    
     })

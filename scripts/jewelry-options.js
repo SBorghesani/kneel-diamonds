@@ -28,7 +28,7 @@ document.addEventListener(
             </li>`
         } else {
             return `<li>
-            <input type="radio" name="jewelryOption" value="${jewelryOption.id}"/> ${jewelryOption.option}
+            <input type="radio" name="jewelryOption" value="${jewelryOption.id}" required /> ${jewelryOption.option}
             </li>`
         } 
     })

@@ -37,7 +37,7 @@ const buildOrderListItem = (order) => {
         }
         catch(err) {
             // window.alert("you fucked up")
-            location.reload()
+            // location.reload()
         }   
     }
 
