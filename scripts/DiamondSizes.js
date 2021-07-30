@@ -2,7 +2,7 @@ import { getSizes, setSize, getOrderBuilder } from "./database.js"
 import { renderAllHTML } from "./main.js"
 
 const sizes = getSizes()
-const orderBuilder = getOrderBuilder()
+let orderBuilder = getOrderBuilder()
 
 // const sizesContainer = document.querySelectorAll(".choices__sizes")
 // const renderSizesHTML = () => { --------------- This doesn't work
@@ -40,7 +40,6 @@ export const DiamondSizes = () => {
 
     html += listItems.join("")
     html += "</ul>"
-
     return html
 }
 

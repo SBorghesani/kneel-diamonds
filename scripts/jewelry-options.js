@@ -1,4 +1,5 @@
-import { getJewelryOptions, setJewelryOption, getOrderBuilder, getMetals } from "./database.js"
+import { getJewelryOptions, setJewelryOption, getOrderBuilder } from "./database.js"
+import { renderAllHTML } from "./main.js"
 
 const jewelryOptions = getJewelryOptions()
 const orderBuilder = getOrderBuilder()
@@ -8,7 +9,8 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "jewelryOption") {
             setJewelryOption(parseInt(event.target.value))
-
+            console.log("State of data has changed. Regenerating HTML...")
+            renderAllHTML()
         }
     }
 )
@@ -36,6 +38,3 @@ export const JewelryOptions = () => {
     
     return html
 }
-// return `<li calss="jewelryOption">
-//     <input type="radio" name="jewelryOption" value="${jewelryOption.id}" /> ${jewelryOption.option}
-// </li>`

@@ -1,6 +1,8 @@
-import { getStyles, setStyle } from "./database.js"
+import { getStyles, setStyle, getOrderBuilder } from "./database.js"
+import { renderAllHTML } from "./main.js"
 
 const styles = getStyles()
+const orderBuilder = getOrderBuilder()
 
 document.addEventListener(
     "change",
@@ -8,6 +10,8 @@ document.addEventListener(
         if (event.target.name === "style") {
             // window.alert(`User chose style ${event.target.value}`)
             setStyle(parseInt(event.target.value))
+            console.log("State of data has changed. Regenerating HTML...")
+            renderAllHTML()
         }
     }
 )
@@ -17,16 +21,26 @@ export const JewelryStyles = () => {
 
     // Use .map() for converting objects to <li> elements
     const listItemsArray = styles.map(style => {
-        return `<li>
-        <input type="radio" name="style" value="${style.id}" /> ${style.style}
-    </li>`
+        if (style.id === orderBuilder.styleId) {
+            return `<li>
+            <input type="radio" name="style" value="${style.id}" checked/> ${style.style}
+            </li>`
+        } else {
+            return `<li>
+            <input type="radio" name="style" value="${style.id}" /> ${style.style}
+            </li>`
+        } 
     })
-
-
+    
+    
     // Join all of the strings in the array into a single string
     html += listItemsArray.join("")
-
+    
     html += "</ul>"
     return html
 }
 
+
+// return `<li>
+// <input type="radio" name="style" value="${style.id}" /> ${style.style}
+// </li>`

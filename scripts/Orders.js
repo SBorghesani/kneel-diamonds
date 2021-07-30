@@ -1,8 +1,10 @@
 import { getOrders, getMetals, getStyles, getSizes, getJewelryOptions } from "./database.js"
+import { renderAllHTML } from "./main.js"
 const metals = getMetals()
 const styles = getStyles()
 const sizes = getSizes()
 const jewelryOptions = getJewelryOptions()
+
 
 const buildOrderListItem = (order) => {
     const foundMetal = metals.find(
@@ -27,6 +29,7 @@ const buildOrderListItem = (order) => {
         style: "currency",
         currency: "USD"
     })
+
     
     return `<li>
         Order #${order.id} cost: ${costString} was placed on ${order.timestamp}
@@ -49,7 +52,6 @@ export const Orders = () => {
 
     html += listItems.join("")
     html += "</ul>"
-
     return html
 }
 
