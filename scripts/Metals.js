@@ -13,10 +13,10 @@ document.addEventListener(
             renderAllHTML()
         }
     }
-    )
-    
-    export const Metals = () => {
-    const orderBuilder = getOrderBuilder()
+)
+
+const orderBuilder = getOrderBuilder()
+export const Metals = () => {
     let html = "<ul>"
 
     // Use .map() for converting objects to <li> elements

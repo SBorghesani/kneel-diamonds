@@ -2,7 +2,6 @@ import { getSizes, setSize, getOrderBuilder } from "./database.js"
 import { renderAllHTML } from "./main.js"
 
 const sizes = getSizes()
-let orderBuilder = getOrderBuilder()
 
 // const sizesContainer = document.querySelectorAll(".choices__sizes")
 // const renderSizesHTML = () => { --------------- This doesn't work
@@ -20,9 +19,10 @@ document.addEventListener(
             renderAllHTML()
         }
     }
-)
-
-export const DiamondSizes = () => {
+    )
+    
+    export const DiamondSizes = () => {
+    const orderBuilder = getOrderBuilder()
     let html = "<ul>"
 
     // Use .map() for converting objects to <li> elements

@@ -2,7 +2,6 @@ import { getJewelryOptions, setJewelryOption, getOrderBuilder } from "./database
 import { renderAllHTML } from "./main.js"
 
 const jewelryOptions = getJewelryOptions()
-const orderBuilder = getOrderBuilder()
 
 document.addEventListener(
     "change",
@@ -13,12 +12,13 @@ document.addEventListener(
             renderAllHTML()
         }
     }
-)
-
-
-
-
-export const JewelryOptions = () => {
+    )
+    
+    
+    
+    
+    export const JewelryOptions = () => {
+    const orderBuilder = getOrderBuilder()
     let html = "<ul class='jewelryOptions'>"
 
     const listedItems = jewelryOptions.map(jewelryOption => {

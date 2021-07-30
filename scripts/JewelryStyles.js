@@ -2,7 +2,6 @@ import { getStyles, setStyle, getOrderBuilder } from "./database.js"
 import { renderAllHTML } from "./main.js"
 
 const styles = getStyles()
-const orderBuilder = getOrderBuilder()
 
 document.addEventListener(
     "change",
@@ -14,9 +13,10 @@ document.addEventListener(
             renderAllHTML()
         }
     }
-)
-
-export const JewelryStyles = () => {
+    )
+    
+    export const JewelryStyles = () => {
+    const orderBuilder = getOrderBuilder()
     let html = "<ul>"
 
     // Use .map() for converting objects to <li> elements

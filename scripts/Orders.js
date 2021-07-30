@@ -1,5 +1,4 @@
 import { getOrders, getMetals, getStyles, getSizes, getJewelryOptions } from "./database.js"
-import { renderAllHTML } from "./main.js"
 const metals = getMetals()
 const styles = getStyles()
 const sizes = getSizes()
@@ -23,18 +22,24 @@ const buildOrderListItem = (order) => {
         (jewelryOption) => {
             return jewelryOption.id === order.jewelryOptionId
         })
-   
-    const totalCost = (foundMetal.price + foundStyle.price + foundSize.price) * foundJewelryOption.modifier
-    const costString = totalCost.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD"
-    })
 
-    
-    return `<li>
-        Order #${order.id} cost: ${costString} was placed on ${order.timestamp}
-    </li>`
-}
+     try {
+
+         const totalCost = (foundMetal.price + foundStyle.price + foundSize.price) * foundJewelryOption.modifier
+         const costString = totalCost.toLocaleString("en-US", {
+             style: "currency",
+             currency: "USD"
+            })
+            
+            return `<li>
+            Order #${order.id} cost: ${costString} was placed on ${order.timestamp}
+            </li>`
+        }
+        catch(err) {
+            // window.alert("you fucked up")
+            location.reload()
+        }   
+    }
 
 
 

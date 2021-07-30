@@ -3,11 +3,10 @@ import { DiamondSizes } from "./DiamondSizes.js"
 import { JewelryStyles } from "./JewelryStyles.js"
 import { Orders } from "./Orders.js"
 import { Metals } from "./Metals.js"
-import { addCustomOrder, getOrderBuilder } from "./database.js"
+import { addCustomOrder } from "./database.js"
 import { JewelryOptions } from "./jewelry-options.js"
 import { renderAllHTML } from "./main.js"
 
-let orderBuilder = getOrderBuilder()
 document.addEventListener(
     "click",
     (event) => {
@@ -15,7 +14,6 @@ document.addEventListener(
         if (itemClicked.id.startsWith("orderButton")) {
             addCustomOrder()
             renderAllHTML()
-            orderBuilder = {}
         }
 
     }
