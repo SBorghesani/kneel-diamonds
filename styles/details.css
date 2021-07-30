@@ -12,3 +12,8 @@
 .choices {
     display: flex;
 }
+
+.jewelryOptions {
+    display: flex;
+    align-items: flex-end;
+}

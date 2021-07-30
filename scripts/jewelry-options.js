@@ -7,6 +7,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "jewelryOption") {
             setJewelryOption(parseInt(event.target.value))
+
         }
     }
 )
@@ -15,10 +16,10 @@ document.addEventListener(
 
 
 export const JewelryOptions = () => {
-    let html = "<ul>"
+    let html = "<ul class='jewelryOptions'>"
 
     const listedItems = jewelryOptions.map(jewelryOption => {
-        return `<li>
+        return `<li calss="jewelryOption">
             <input type="radio" name="jewelryOption" value="${jewelryOption.id}" /> ${jewelryOption.option}
         </li>`
     })
