@@ -24,7 +24,7 @@ document.addEventListener(
     const listedItems = jewelryOptions.map(jewelryOption => {
         if (jewelryOption.id === orderBuilder.jewelryOptionId) {
             return `<li>
-            <input type="radio" name="jewelryOption" value="${jewelryOption.id}" checked/> ${jewelryOption.option}
+            <input type="radio" name="jewelryOption" value="${jewelryOption.id}" required checked/> ${jewelryOption.option}
             </li>`
         } else {
             return `<li>

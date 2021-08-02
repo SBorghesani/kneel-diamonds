@@ -23,7 +23,7 @@ document.addEventListener(
     const listItemsArray = styles.map(style => {
         if (style.id === orderBuilder.styleId) {
             return `<li>
-            <input type="radio" name="style" value="${style.id}" checked/> ${style.style}
+            <input type="radio" name="style" value="${style.id}" required checked/> ${style.style}
             </li>`
         } else {
             return `<li>

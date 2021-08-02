@@ -9,6 +9,10 @@
     box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
 }
 
+.options:required {
+    color: red;
+}
+
 .choices {
     display: flex;
 }
