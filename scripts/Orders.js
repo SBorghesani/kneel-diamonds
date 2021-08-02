@@ -1,4 +1,5 @@
 import { getOrders, getMetals, getStyles, getSizes, getJewelryOptions } from "./dataAccess.js"
+import { database } from "./database.js"
 const metals = getMetals()
 const styles = getStyles()
 const sizes = getSizes()
@@ -22,21 +23,26 @@ const buildOrderListItem = (order) => {
         (jewelryOption) => {
             return jewelryOption.id === order.jewelryOptionId
         })
+        try {
 
-     try {
 
+        // if (foundMetal === undefined || foundStyle === undefined || foundSize === undefined || foundJewelryOption === undefined) {
+        //     window.alert("oops!")
+        // } else {
          const totalCost = (foundMetal.price + foundStyle.price + foundSize.price) * foundJewelryOption.modifier
          const costString = totalCost.toLocaleString("en-US", {
              style: "currency",
              currency: "USD"
             })
-            
             return `<li>
             Order #${order.id} cost: ${costString} was placed on ${order.timestamp}
             </li>`
-        }
+            } 
+        // }
         catch(err) {
-            // window.alert("you fucked up")
+            // database.customOrders = []
+            // database.orderBuilder.id -= 1
+            // window.alert("You must make all selections.")
             // location.reload()
         }   
     }
