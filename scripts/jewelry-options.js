@@ -1,4 +1,4 @@
-import { getJewelryOptions, setJewelryOption, getOrderBuilder } from "./database.js"
+import { getJewelryOptions, setJewelryOption, getOrderBuilder } from "./dataAccess.js"
 import { renderAllHTML } from "./main.js"
 
 const jewelryOptions = getJewelryOptions()
