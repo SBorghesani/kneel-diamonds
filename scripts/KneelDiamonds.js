@@ -12,8 +12,8 @@ document.addEventListener(
     (event) => {
         const itemClicked = event.target
         if (itemClicked.id.startsWith("orderButton")) {
-            addCustomOrder()
             renderAllHTML()
+            addCustomOrder()
         }
 
     }

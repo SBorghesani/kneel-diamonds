@@ -68,12 +68,7 @@ export const getJewelryOptions = () => {
 }
 
 export const setMetal = (id) => {
-    try {
         database.orderBuilder.metalId = id
-    } 
-    catch(err) {
-        window.alert("You fuct up")
-    }
 }
 
 export const setSize = (id) => {

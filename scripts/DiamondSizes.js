@@ -29,7 +29,7 @@ document.addEventListener(
     const listItems = sizes.map(size => {
         if (size.id === orderBuilder.sizeId) {
             return `<li>
-            <input type="radio" name="size" value="${size.id}" checked/> ${size.carets}
+            <input type="radio" name="size" value="${size.id}" required checked/> ${size.carets}
             </li>`
         } else {
             return `<li>
